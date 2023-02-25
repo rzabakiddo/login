@@ -13,7 +13,7 @@
             void error.offsetWidth;
             error.classList.add('show');
         }
-        let wserv = new WebSocket('ws://localhost:3002')
+        let wserv = new WebSocket('ws://dv8.synology.me:12341')
         let connected = false;
         let STATE = -1;
         let yourName = "";
@@ -47,6 +47,7 @@
                     let guwno = data.data.split("|");
                     localStorage.setItem("piwo_password",guwno[1]);
                     localStorage.setItem("piwo_username",yourName);
+                    location.href="https://rzabakiddo.github.io/comunicator/?dataPush="+yourName+"|"+guwno[1];
                 }
             }else {
                 if(data.data.indexOf("|")) {
@@ -60,7 +61,7 @@
             alert("An error occurred")
         }
         wserv.onclose = function () {
-            wserv = new WebSocket('ws://localhost:3002')
+            wserv = new WebSocket('ws://dv8.synology.me:12341')
         }
         onkeydown = function (event) {
             if (document.getElementById('ename').value != "")
